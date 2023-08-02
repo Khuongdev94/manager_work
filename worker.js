@@ -185,7 +185,8 @@ function conditionCheck() {
 }
 
 function addWorker() {
-  var id = Date.now();
+  var idWork = worker.map((item) => item.id);
+  var id = Math.max(...idWork) + 1;
   var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
   var day = document.getElementById("day").value;
@@ -202,7 +203,7 @@ function addWorker() {
   };
   var isValid = validate(data);
   if (!isValid) return;
-  worker.unshift(data);
+  worker.push(data);
   renderListWorker();
   clear();
 }
